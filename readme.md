@@ -1,34 +1,31 @@
-# CSE341 Lesson 7 Class Start
+# Lesson 8 Class Start
 
-This repository contains a collection of code for students that take the CSE 341 course at Brigham Young University - Idaho.
+The code for this class activity will pick up where the lesson 7 class activity concluded.
 
 ## Steps to complete activity
-- Start here: https://auth0.com/docs/ and follow the docs for backend node.js api
 
-### Detailed steps to complete activity
-- npm init -y
-- npm install express express-openid-connect dotenv
-- create .env
-- Sign up for free auth0 account
-- Create application in auth0
-    - Click Settings
-        - "Allowed Callback URLS" http:localhost:3000/callback
-        - "Allowed Logout URLS" http:localhost:3000
-        - scroll to bottom and save
-- Create server.js file in node project
-- Create express app and listen on a port
-- use dotenv to grab values from env file
-    - ISSUER_BASE_URL - domain
-    - CLIENT_ID - client id
-    - BASE_URL - http://localhost:3000
-    - SECRET - any string 32 characters or more
-- Copy app.use auth() from docs
-- Check localhost:3000/login - you should be able to login
-- Create route for homepage "/"
-- res.send(req.oidc.isAuthenticated() ? 'Logged in : 'Logged out')
-- Add authRequired:false to auth({})
-- Add auth0Logout:true to auth({})
-- Create route for '/profile' to test middleware
+#### Getting started with the code
+
+- Download this code
+- Run npm install
+- Run npm start
+
+#### Creating the request
+
+- Create a simple GET request which will retrieve data from a MongoDB collection of your choice (Be sure to create an .env file for your MONGODB URI).
+
+#### Swagger documentation and testing
+
+- Create a Swagger.json file for this route. You may use [swagger-autogen](https://www.npmjs.com/package/swagger-autogen) if you wish.
+- Create an "/api-docs" route like we've done before so that you can access the swagger ui. You may use [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express) if you wish.
+- Test the GET request with your swagger ui to ensure it works.
+
+#### Incorporating OAuth
+
+- Add the requiresAuth() middleware provided by Auth0 to the route you created previously.
+- Make sure you are logged out. If you try testing your route with your Swagger UI now, it will not work.
+- Go to /login again and log in like you did earlier. If you go back to /api-docs and test out your route, it will work!
+
 ## Solution
 
-[GitHub Repo](https://github.com/byui-cse/cse341-code-student/tree/L07-class-complete)
+[GitHub Repo](https://github.com/byui-cse/cse341-code-student/tree/L08-class-complete)

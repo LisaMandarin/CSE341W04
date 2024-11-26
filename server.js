@@ -1,6 +1,7 @@
 require("dotenv").config()
+require("./mongo_db")
 const express = require("express")
-const { auth } = require("express-openid-connect")
+const { auth, requiresAuth } = require("express-openid-connect")
 
 const app = express()
 
@@ -15,8 +16,11 @@ const config = {
 app.use(auth(config))
 app.get("/", (req, res) => {
     console.log("isAuthenticated: ", req.oidc.isAuthenticated())
-    console.log("user: ", req.oidc.user)
     res.send(req.oidc.isAuthenticated()? "Logged in" : "Logged out")
+})
+
+app.get("/profile", requiresAuth(), (req, res) => {
+    res.send(JSON.stringify(req.oidc.user))
 })
 
 const port = process.env.PORT
